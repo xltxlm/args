@@ -14,7 +14,10 @@ class Args extends Args\Args_implements
         $this->case1_fromarray_nota_array_hit_check(gettype($this->getfromarray()) != 'array');
         $this->case1_key_notexist_hit_check(strlen($this->getkey()) == 0);
 
-        $this->setvalue($this->getfromarray()[$this->getkey()]);
+        //如果没有值，那么还是保持null，后面的类型判断会收拾的
+        if (isset($this->getfromarray()[$this->getkey()])) {
+            $this->setvalue($this->getfromarray()[$this->getkey()]);
+        }
 
         return $this->case1_type($this->gettype());
 
