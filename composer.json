@@ -1,0 +1,32 @@
+{
+  "name": "xltxlm/args",
+  "authors": [
+    {
+      "name": "copygithub",
+      "email": "xltxlm@qq.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "description":"锁定参数值的类型，默认值判断",
+  "require": {
+    "php": "~7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "xltxlm\\args\\": [
+        "src/",
+        "./"
+      ]
+    },
+    "files": [
+    ]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpunit ./test -v --colors=auto --enforce-time-limit"
+    ]
+  }
+}
