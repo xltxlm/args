@@ -33,11 +33,11 @@ class invoke_241_0Test extends TestCase
     private function runcode($input, $args)
     {
         $_GET = $args[0];
-        if ($args[1] !== null && $args[2] !== null) {
+        if (isset($args[1]) && isset($args[2]) && $args[1] !== null && $args[2] !== null) {
             $get = get($input, $args[1], $args[2]);
             return $get;
         }
-        if ($args[1] !== null) {
+        if (isset($args[1]) && $args[1] !== null) {
             $get = get($input, $args[1]);
             return $get;
         }

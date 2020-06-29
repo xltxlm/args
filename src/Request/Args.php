@@ -76,7 +76,7 @@ class Args extends Args\Args_implements
 
         /** 类型已经比对了，那么直接返回固定的值？ */
         if ($is_basic_type) {
-            return $this->fix_value_inbasictype($this->case1_value($this->getvalue() === 0 || $this->getvalue() === '0' || !empty($this->getvalue())), $this->gettype());
+            return $this->fix_value_inbasictype($this->case1_value($this->getvalue() === '' || $this->getvalue() === 0 || $this->getvalue() === '0' || !empty($this->getvalue())), $this->gettype());
         } else {
             return $this->case1_value($this->getvalue() === 0 || $this->getvalue() === '0' || !empty($this->getvalue()));
         }
@@ -85,7 +85,11 @@ class Args extends Args\Args_implements
 
     function case1_type_nothit()
     {
-        return $this->case1_value($this->getvalue() === 0 || $this->getvalue() === '0' || !empty($this->getvalue()));
+        $is_basic_type = $this->is_basic_type(gettype($this->getvalue()));
+        if ($is_basic_type) {
+            return $this->getvalue();
+        }
+        return $this->case1_value(!empty($this->getvalue()));
     }
 
     function case1_default_type_notall_basictype_hit_check_detail()
